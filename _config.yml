@@ -218,6 +218,15 @@ defaults:
       toc: true # Display TOC column in posts.
       permalink: /posts/books/:title/ #주소 정하는거
       categories: [books]
+  - scope:
+      path: "_posts/legal_search"
+      type : posts
+    values:
+      layout: post
+      comments: true # Enable comments in posts.
+      toc: true # Display TOC column in posts.
+      permalink: /posts/books/:title/ #주소 정하는거
+      categories: [Project, legal_search]
 
 sass:
   style: compressed
