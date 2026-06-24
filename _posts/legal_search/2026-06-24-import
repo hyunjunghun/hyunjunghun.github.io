@@ -1,0 +1,61 @@
+---
+title: Java package와 import 정리
+date: 2026-06-24 14:30:00 +0900
+tags: [java, package, import]
+---
+import
+긴 이름을 짧게 쓰게 해주는 것
+
+'java.util.ArrayList<String> list = new java.util.ArrayList<>();'
+
+```java
+import java.util.ArrayList;
+ArrayList<String> list = new ArrayList<>();
+```
+
+type들을 import한다.
+type에는 두 가지가 있는데
+1. primitive type : int, double, boolean ...
+2. declared type : class, interface, enum, record, annotation으로 선언된 것
+그 중 declared type을 import한다.
+```java
+class User { }
+interface Runnable { }
+enum Role { ADMIN, USER }
+record UserDto(String name, int age) { }
+@interface MyAnnotation { }
+```
+
+ex)
+```java
+import java.util.List;
+import java.util.ArrayList;
+```
+여기서 java.util은 package
+List, ArrayList는 각각 interface type, class type이다.
+
+static import란 것도 있는데
+어떤 type 내부의 static member을 가져온다.
+static member란 객체마다 따로 있는게 아니라, type 자체에 붙어 있는 변수/함수를 말한다.
+```java
+class User {
+    static int count;        // static field
+
+    static void printCount() { // static method
+        System.out.println(count);
+    }
+}
+```
+static을 붙여서 선언된다. 다만, interface의 field는 자동으로 public static final처럼 취급된다.
+
+```java
+import static java.lang.Math.PI;
+import static java.lang.Math.max;
+```
+java.lang은 package
+Math는 class
+PI는 static field, max는 static method이다.
+
+즉, 일반 import는 다른 package의 type(class, interface, enum, record, annotation)을 가져오고,
+static import는 어떤 type 내부의 static member(static field/method)를 가져온다.
+단, java.lang package는 자동 import된다. 그래서 String, Math 같은 건 import 없이 쓸 수 있다.
